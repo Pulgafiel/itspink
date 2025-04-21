@@ -210,13 +210,25 @@
       from { transform: translateY(20px); opacity: 0; }
       to { transform: translateY(0); opacity: 1; }
     }
+
+    .hidden {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease-out;
+    }
+
+    .show {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
 <body>
 
 <header>
   <h1>La nueva era del contenido NSFW</h1>
-  <p>La red social para descubrir, crecer y conectar. Hecha para creadoras. Pensada para fans.</p>
+  <p>La red social para descubrir, crecer y conectar. Hecha para creadores. Pensada para fans.</p>
+  <p style="margin-top: 1rem; font-weight: 600; color: #fff0f5;">Sin filtros ni límites. Publica lo que Instagram no te deja y gana dinero con ello.</p>
   <a href="#registro" class="cta">Unirme ahora</a>
   <div class="arrow">&#8595;</div>
 </header>
@@ -224,58 +236,36 @@
 <section>
   <h2>¿Por qué elegirnos?</h2>
   <div class="grid-4-horizontal">
-    <div class="card">
-      <h3>✨Descubrimiento Real</h3>
-      <p>Algoritmo para descubrir nuevas creadoras dentro de la plataforma. ¡El contenido se encuentra solo!</p>
-    </div>
-    <div class="card">
-      <h3>💸 Comisiones Justas</h3>
-      <p>Creadoras con más beneficios y menos comisiones. Hasta 0% para embajador@s en fase inicial.</p>
-    </div>
-    <div class="card">
-      <h3>🔥 Viralidad Orgánica</h3>
-      <p>Reels, hashtags, perfiles destacados y sistema de tendencias para impulsar tu contenido.</p>
-    </div>
-    <div class="card">
-      <h3>🏅 Gamificación</h3>
-      <p>Puntos, niveles, logros, y concursos. Interactuar y ganar es parte del juego.</p>
-    </div>
+    <div class="card"><h3>✨Descubrimiento Real</h3><p>Algoritmo para descubrir nuevas creadoras dentro de la plataforma.</p></div>
+    <div class="card"><h3>💸 Comisiones Justas</h3><p>Creadoras con más beneficios y menos comisiones.</p></div>
+    <div class="card"><h3>🔥 Viralidad Orgánica</h3><p>Reels, hashtags, perfiles destacados y sistema de tendencias.</p></div>
+    <div class="card"><h3>🏅 Gamificación</h3><p>Puntos, niveles, logros y concursos.</p></div>
   </div>
 </section>
 
 <section>
   <h2>Pensado para Creadoras</h2>
   <div class="grid">
-    <div class="card">
-      <h3>🎥 Herramientas de Impacto</h3>
-      <p>Reels, livestreams, encuestas y más. Comparte y conecta de forma creativa.</p>
-    </div>
-    <div class="card">
-      <h3>🌈 Nichos & Subnichos</h3>
-      <p>Perfiles por temática: fitness, cosplay, gamer, etc. Tu comunidad ideal te encuentra.</p>
-    </div>
-    <div class="card">
-      <h3>🎉 Recompensas Reales</h3>
-      <p>Eventos, “Creadora del Mes”, colaboraciones y visibilidad premium.</p>
-    </div>
+    <div class="card"><h3>🎥 Herramientas de Impacto</h3><p>Reels, livestreams, encuestas y más. Comparte y conecta de forma creativa.</p></div>
+    <div class="card"><h3>🌈 Nichos & Subnichos</h3><p>Perfiles por temática: fitness, cosplay, gamer, etc.</p></div>
+    <div class="card"><h3>🎉 Recompensas Reales</h3><p>Eventos, “Creadora del Mes”, colaboraciones y visibilidad premium.</p></div>
   </div>
 </section>
 
 <section>
   <h2>Para la Comunidad</h2>
   <div class="grid">
-    <div class="card">
-      <h3>🔍 Contenido relevante</h3>
-      <p>Una experiencia personalizada basada en intereses, interacción y reputación.</p>
-    </div>
-    <div class="card">
-      <h3>💬 Valora y Conecta</h3>
-      <p>Deja reseñas, comenta públicamente, y forma parte activa del crecimiento de tus favoritas.</p>
-    </div>
-    <div class="card">
-      <h3>🎁 Gana por Interactuar</h3>
-      <p>Conecta directamente con tus creadoras favoritas por chat privado. Cuanto más interactúas, más ventajas desbloqueas.</p>
-    </div>
+    <div class="card"><h3>🔍 Contenido relevante</h3><p>Una experiencia personalizada basada en intereses, interacción y reputación.</p></div>
+    <div class="card"><h3>💬 Valora y Conecta</h3><p>Deja reseñas, comenta públicamente y apoya a tus favoritas.</p></div>
+    <div class="card"><h3>🎁 Gana por Interactuar</h3><p>Conecta por chat privado y desbloquea ventajas.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Embajador@s</h2>
+  <p style="text-align: center; max-width: 700px; margin: auto;">¿Quieres formar parte del inicio y crecer con nosotrxs? Descarga el folleto informativo y descubre cómo ser embajador@.</p>
+  <div style="text-align: center; margin-top: 1.5rem;">
+    <a class="cta" href="folleto-nuevo.png" download>Descargar folleto informativo</a>
   </div>
 </section>
 
@@ -285,7 +275,18 @@
   <button onclick="openModal()" class="cta">Pre-inscribirse</button>
 </section>
 
-<!-- Modal -->
+<section id="faq">
+  <h2>Preguntas Frecuentes</h2>
+  <div class="grid">
+    <div class="card"><h3>¿Qué comisiones se cobran?</h3><p>0% durante los primeros meses para embajador@s. Después, tarifas competitivas frente a otras plataformas.</p></div>
+    <div class="card"><h3>¿Cuál es el nombre de la plataforma?</h3><p>Es confidencial. Se revelará públicamente días antes del lanzamiento.</p></div>
+    <div class="card"><h3>¿Cuándo estará disponible?</h3><p>Estamos trabajando 24/7 para lanzarla lo antes posible. ¡Muy pronto!</p></div>
+    <div class="card"><h3>¿Es solo para contenido +18?</h3><p>No, también aceptamos creadores de fitness, gaming, lifestyle, etc. Es una red sin censura, no exclusiva para NSFW.</p></div>
+    <div class="card"><h3>¿Cómo puedo ser embajador@?</h3><p>Descarga el folleto, revisa los requisitos e indica que quieres aplicar al programa en el formulario de pre-inscripción.</p></div>
+    <div class="card"><h3>¿Puedo registrarme sin tener seguidores?</h3><p>Sí. Lo importante es tu talento y constancia. El algoritmo te ayuda a crecer desde cero.</p></div>
+  </div>
+</section>
+
 <div id="formModal" class="modal">
   <div class="modal-content">
     <button class="close" onclick="closeModal()">&times;</button>
@@ -312,6 +313,19 @@
       modal.style.display = "none";
     }
   }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.card, h2, p').forEach(el => {
+    el.classList.add('hidden');
+    observer.observe(el);
+  });
 </script>
 
 </body>
