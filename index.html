@@ -1,32 +1,27 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>La nueva red NSFW del mundo hispano</title>
+  <title>The new NSFW network for the Spanish-speaking world</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --rosa: #f72585;
-      --rosa-suave: #ffb3c6;
-      --blanco: #ffffff;
-      --gris: #1a1a1a;
+      --pink: #f72585;
+      --soft-pink: #ffb3c6;
+      --white: #ffffff;
+      --dark: #1a1a1a;
     }
-
-    * {
-      box-sizing: border-box;
-    }
-
+    * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background-color: var(--blanco);
-      color: var(--gris);
+      background-color: var(--white);
+      color: var(--dark);
       scroll-behavior: smooth;
     }
-
     header {
-      background-color: var(--rosa);
+      background-color: var(--pink);
       color: white;
       text-align: center;
       height: 100vh;
@@ -38,22 +33,19 @@
       position: relative;
       overflow: hidden;
     }
-
     header h1 {
-      font-size: 3rem;
+      font-size: 2.5rem;
       font-weight: 800;
       margin-bottom: 1rem;
       animation: fadeDown 1s ease-out forwards;
     }
-
     header p {
-      font-size: 1.25rem;
+      font-size: 1.1rem;
       font-weight: 400;
       max-width: 700px;
       margin: 0 auto;
       animation: fadeDown 1.5s ease-out forwards;
     }
-
     .arrow {
       position: absolute;
       bottom: 30px;
@@ -63,20 +55,17 @@
       color: white;
       animation: bounce 1.5s infinite;
     }
-
     @keyframes bounce {
       0%, 100% { transform: translateX(-50%) translateY(0); }
       50% { transform: translateX(-50%) translateY(10px); }
     }
-
     @keyframes fadeDown {
       0% { opacity: 0; transform: translateY(-30px); }
       100% { opacity: 1; transform: translateY(0); }
     }
-
     .cta {
       background-color: white;
-      color: var(--rosa);
+      color: var(--pink);
       padding: 1.2rem 2.5rem;
       border: 2px solid white;
       border-radius: 999px;
@@ -90,242 +79,193 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       font-size: 1.1rem;
     }
-
     .cta:hover {
-      background-color: var(--rosa-suave);
-      color: var(--gris);
-      border-color: var(--rosa-suave);
+      background-color: var(--soft-pink);
+      color: var(--dark);
       transform: scale(1.05);
     }
-
     section {
-      padding: 4rem 2rem;
+      padding: 4rem 1.5rem;
       max-width: 1100px;
       margin: auto;
+      position: relative;
     }
-
     h2 {
       text-align: center;
-      font-size: 2rem;
-      margin-bottom: 2rem;
-      color: var(--rosa);
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: var(--pink);
+      animation: fadeDown 1s ease-out forwards;
     }
-
-    .grid {
-      display: grid;
+    .benefits {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 2rem;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      font-size: 1rem;
+      text-align: center;
+      animation: fadeDown 1.2s ease-out forwards;
     }
-
-    .grid-4-horizontal {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
-    }
-
-    @media (max-width: 1024px) {
-      .grid-4-horizontal {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 600px) {
-      .grid-4-horizontal {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .card {
-      background-color: #fff0f5;
-      padding: 2rem;
+    .benefits div {
+      flex: 1 1 250px;
+      max-width: 300px;
+      background: #fff0f5;
       border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(247, 37, 133, 0.15);
-      transition: transform 0.2s ease;
+      padding: 1.5rem;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease;
     }
-
-    .card:hover {
-      transform: translateY(-8px);
+    .mockup img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 20px;
+      filter: blur(5px);
+      margin: 1rem;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease;
     }
-
-    .card h3 {
-      color: var(--rosa);
-      margin-bottom: 0.75rem;
+    .show {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
     }
-
-    .card p {
-      font-size: 0.95rem;
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
     }
-
+    .modal-content {
+      background-color: white;
+      width: 95%;
+      max-width: 800px;
+      border-radius: 16px;
+      overflow: hidden;
+      padding: 0;
+    }
+    .modal iframe {
+      width: 100%;
+      height: 700px;
+      border: none;
+    }
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 25px;
+      font-size: 1.5rem;
+      color: #333;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 10;
+    }
     footer {
       text-align: center;
       background-color: #ffe4ec;
       padding: 2rem;
       font-size: 0.9rem;
-      color: var(--gris);
+      color: var(--dark);
       border-top: 1px solid #ffc2d1;
     }
-
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      left: 0;
-      top: 0;
-      width: 100vw;
-      height: 100vh;
-      overflow: auto;
-      background-color: rgba(0, 0, 0, 0.6);
-      align-items: center;
-      justify-content: center;
-      animation: fadeIn 0.3s ease;
-    }
-
-    .modal-content {
-      background-color: white;
-      padding: 2rem;
-      border-radius: 16px;
-      max-width: 800px;
-      width: 90%;
-      position: relative;
-      animation: slideUp 0.3s ease;
-    }
-
-    .close {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      font-size: 1.5rem;
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: #333;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes slideUp {
-      from { transform: translateY(20px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    .hidden {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.6s ease-out;
-    }
-
-    .show {
-      opacity: 1;
-      transform: translateY(0);
+    @media (max-width: 600px) {
+      header h1 { font-size: 2rem; }
+      header p { font-size: 1rem; }
+      h2 { font-size: 1.5rem; }
+      .cta { padding: 1rem 2rem; font-size: 1rem; }
     }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>La nueva era del contenido NSFW</h1>
-  <p>La red social para descubrir, crecer y conectar. Hecha para creadores. Pensada para fans.</p>
-  <p style="margin-top: 1rem; font-weight: 600; color: #fff0f5;">Publica lo que Instagram no te deja y gana dinero con ello en la nueva plataforma rosa.</p>
-  <a href="#registro" class="cta">Unirme ahora</a>
+  <h1>The new era of NSFW content</h1>
+  <p>Discover. Create. Monetize. What Instagram doesn't allow, you can do here.</p>
+  <a href="#register" class="cta">Pre-register</a>
   <div class="arrow">&#8595;</div>
 </header>
 
 <section>
-  <h2>¿Por qué elegirnos?</h2>
-  <div class="grid-4-horizontal">
-    <div class="card"><h3>✨Descubrimiento Real</h3><p>Algoritmo para descubrir nuevas creadoras dentro de la plataforma.</p></div>
-    <div class="card"><h3>💸 Comisiones Justas</h3><p>Creadoras con más beneficios y menos comisiones.</p></div>
-    <div class="card"><h3>🔥 Viralidad Orgánica</h3><p>Reels, hashtags, perfiles destacados y sistema de tendencias.</p></div>
-    <div class="card"><h3>🏅 Gamificación</h3><p>Puntos, niveles, logros y concursos.</p></div>
+  <h2>A censorship-free community for creators</h2>
+  <p style="text-align:center; max-width:700px; margin: 0 auto; animation: fadeDown 1.3s ease-out forwards;">
+    The new pink platform is a Spanish alternative made to give you more freedom, lower commissions, and exclusive events. Earn more, connect better, and create without limits.
+  </p>
+  <div style="text-align:center; margin-top:2rem;">
+    <button onclick="openModal()" class="cta">Get early access</button>
+  </div>
+</section>
+
+<section class="mockup">
+  <h2>A look at the platform</h2>
+  <div style="text-align:center;">
+    <img class="scroll-anim" src="Imagen1.jpeg" alt="Preview 1" />
+    <img class="scroll-anim" src="Imagen2.jpeg" alt="Preview 2" />
+    <p style="font-size: 0.9rem; color: gray; animation: fadeDown 1.5s ease-out forwards;">Blurred image for privacy</p>
   </div>
 </section>
 
 <section>
-  <h2>Pensado para Creadoras</h2>
-  <div class="grid">
-    <div class="card"><h3>🎥 Herramientas de Impacto</h3><p>Reels, livestreams, encuestas y más. Comparte y conecta de forma creativa.</p></div>
-    <div class="card"><h3>🌈 Nichos & Subnichos</h3><p>Perfiles por temática: fitness, cosplay, gamer, etc.</p></div>
-    <div class="card"><h3>🎉 Recompensas Reales</h3><p>Eventos, “Creadora del Mes”, colaboraciones y visibilidad premium.</p></div>
+  <h2>Early access benefits</h2>
+  <div class="benefits">
+    <div class="scroll-anim"><strong>🌟 Exclusive username:</strong><br />Secure your @handle before launch.</div>
+    <div class="scroll-anim"><strong>🎓 Founding Creator:</strong><br />Official badge and highlighted profile.</div>
+    <div class="scroll-anim"><strong>🎉 VIP Events:</strong><br />Private parties and more.</div>
+    <div class="scroll-anim"><strong>💰 Lower fees:</strong><br />Earn more than on any other platform.</div>
+    <div class="scroll-anim"><strong>🚀 Ambassador Program:</strong><br />Become a face of the platform and enjoy exclusive perks.</div>
   </div>
+</section>
+
+<section id="register" style="text-align:center;">
+  <h2>I want to join!</h2>
+  <p>Limited access, pre-register today and secure your founder perks.</p>
+  <button onclick="openModal()" class="cta">Pre-register</button>
 </section>
 
 <section>
-  <h2>Para la Comunidad</h2>
-  <div class="grid">
-    <div class="card"><h3>🔍 Contenido relevante</h3><p>Una experiencia personalizada basada en intereses, interacción y reputación.</p></div>
-    <div class="card"><h3>💬 Valora y Conecta</h3><p>Deja reseñas, comenta públicamente y apoya a tus favoritas.</p></div>
-    <div class="card"><h3>🎁 Gana por Interactuar</h3><p>Conecta por chat privado y desbloquea ventajas.</p></div>
-  </div>
-</section>
-
-<section>
-  <h2>Embajador@s</h2>
-  <p style="text-align: center; max-width: 700px; margin: auto;">¿Quieres formar parte del inicio y crecer con nosotrxs? Descarga el folleto informativo y descubre cómo ser embajador@.</p>
-  <div style="text-align: center; margin-top: 1.5rem;">
-    <a class="cta" href="folleto-embajadores.jpg" download>Descargar folleto informativo</a>
-  </div>
-</section>
-
-<section id="registro" style="text-align:center;">
-  <h2>Únete antes del lanzamiento</h2>
-  <p>Acceso anticipado, beneficios únicos y la oportunidad de marcar historia en la nueva plataforma rosa.</p>
-  <button onclick="openModal()" class="cta">Pre-inscribirse</button>
-</section>
-
-<section id="faq">
-  <h2>Preguntas Frecuentes</h2>
-  <div class="grid">
-    <div class="card"><h3>¿Qué comisiones se cobran?</h3><p>0% durante los primeros meses para embajador@s. Después, tarifas competitivas frente a otras plataformas.</p></div>
-    <div class="card"><h3>¿Cuál es el nombre de la plataforma?</h3><p>Es confidencial. Se revelará públicamente días antes del lanzamiento.</p></div>
-    <div class="card"><h3>¿Cuándo estará disponible?</h3><p>Estamos trabajando 24/7 para lanzarla lo antes posible. ¡Muy pronto!</p></div>
-    <div class="card"><h3>¿Es solo para contenido +18?</h3><p>No, también aceptamos creadores de fitness, gaming, lifestyle, etc. Es una red sin censura, no exclusiva para NSFW.</p></div>
-    <div class="card"><h3>¿Cómo puedo ser embajador@?</h3><p>Descarga el folleto, revisa los requisitos e indica que quieres aplicar al programa en el formulario de pre-inscripción.</p></div>
-    <div class="card"><h3>¿Puedo registrarme sin tener seguidores?</h3><p>Sí. Lo importante es tu talento y constancia. El algoritmo te ayuda a crecer desde cero.</p></div>
+  <h2>Frequently Asked Questions</h2>
+  <div class="benefits">
+    <div class="scroll-anim"><strong>When does it launch?</strong><br />Very soon. Pre-registrations are already open.</div>
+    <div class="scroll-anim"><strong>Is it only for 18+ content?</strong><br />No, it's also for fitness, art, lifestyle, etc.</div>
+    <div class="scroll-anim"><strong>Can I join without followers?</strong><br />Absolutely. What matters is your content.</div>
+    <div class="scroll-anim"><strong>How can I become an ambassador?</strong><br />Indicate your interest in the form. You'll receive details.</div>
+    <div class="scroll-anim"><strong>What's the name of the platform?</strong><br />It's a secret. It will be revealed a few days before launch.</div>
+    <div class="scroll-anim"><strong>Can I still create on other platforms?</strong><br />Yes, absolutely.</div>
   </div>
 </section>
 
 <div id="formModal" class="modal">
   <div class="modal-content">
     <button class="close" onclick="closeModal()">&times;</button>
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeHkJ8ub_fPVs39DlPozqgdmSeuS5ojzhkHAEPn1mEYJFEsTA/viewform?embedded=true" width="100%" height="700" frameborder="0" marginheight="0" marginwidth="0" style="border:none;">Cargando…</iframe>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeHkJ8ub_fPVs39DlPozqgdmSeuS5ojzhkHAEPn1mEYJFEsTA/viewform?embedded=true"></iframe>
   </div>
 </div>
 
 <footer>
-  © 2025 NSFW Network — La nueva red social NSFW en español.
+  © 2025 NSFW Network — The pink platform for creators.
 </footer>
 
 <script>
   function openModal() {
     document.getElementById("formModal").style.display = "flex";
   }
-
   function closeModal() {
     document.getElementById("formModal").style.display = "none";
   }
-
-  window.onclick = function(event) {
-    const modal = document.getElementById("formModal");
-    if (event.target === modal) {
-      modal.style.display = "none";
-    }
-  }
-
-  const observer = new IntersectionObserver((entries) => {
+  const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('show');
+        observer.unobserve(entry.target);
       }
     });
   }, { threshold: 0.1 });
-
-  document.querySelectorAll('.card, h2, p').forEach(el => {
-    el.classList.add('hidden');
-    observer.observe(el);
-  });
+  document.querySelectorAll('.scroll-anim').forEach(el => observer.observe(el));
 </script>
 
 </body>
